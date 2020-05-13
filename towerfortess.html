@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
+</head>
+<body onload="startGame()">
+<script src="game.js"></script>
+<div style="text-align:center;width:480px;">
+  <button onmousedown="up()" " ontouchstart="moveup()">UP</button><br><br>
+  <button onmousedown="left()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
+  <button onmousedown="right()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+  </div>
+<p>ESCAPE THE OBSTACLES BY USING THE FOLLOWING BUTTONS</p>
+
+</body>
+</html>
