@@ -15,6 +15,12 @@ var Game= {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(draw, 20);
+          window.addEventListener('keydown', function (e){
+          Game.key = e.keyCode;
+        })
+        window.addEventListener('keyup', function (e){
+          Game.key = false;
+        })
         },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -57,7 +63,9 @@ function character() {
 }
 
 function draw() {
-    var x, y;
+    if(Game.key && Game.key==37){left();}
+    if(Game.key && Game.key==39){right();}
+    if(Game.key && Game.key==38){up();}
     for (i = 0; i < obs.length; i += 1) {
         if (obs[i].intersect()) {
             Game.stop();
@@ -67,8 +75,11 @@ function draw() {
     Game.clear();
     Game.frameNo += 1;
     if (Game.frameNo == 1 || everyinterval(150)) {
-        x = Game.canvas.width;
-        obs.push(new obstacle(x));
+        posx = Game.canvas.width;
+          minheight = 195;
+        maxheight = 255;
+        posy = Math.floor(Math.random()*(maxheight-minheight+1)+minheight);
+        obs.push(new obstacle(posx,posy));
     }
     for (i = 0; i < obs.length; i += 1) {
         obs[i].x += -1;
